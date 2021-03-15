@@ -1,0 +1,291 @@
+@use 'base' as *;
+
+.home {
+  @include flexCenter;
+  flex-direction: column;
+  position: absolute;
+  width: 80rem;
+  max-width: 100%;
+  margin-top: 3rem;
+
+  &__title {
+    font-size: 6rem;
+    font-family: 'Lobster', cursive;
+    color: $clr-white;
+
+    @include for-size(tablet-landscape-up) {
+      font-size: 8rem;
+    }
+
+    &--paper {
+      margin-left: 3rem;
+    }
+  }
+
+  &__play-btn {
+    margin-top: 10rem;
+    padding: 1.5rem 5rem;
+    border-radius: .4rem;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    background: $clr-green;
+    transition: .4s;
+
+    &:hover {
+      background: rgba($clr-green, .8);
+    }
+  }
+
+  &__play-icon {
+    pointer-events: none;
+    color: $clr-dark;
+    font-size: 3rem;
+  }
+
+  &__image-one,
+  &__image-two {
+    position: absolute;
+    width: 15rem;
+    height: 15rem;
+    top: 10rem;
+
+    @include for-size(phone-only) {
+      display: none;
+    }
+
+    @include for-size(tablet-landscape-up) {
+      width: 20rem;
+      height: 20rem;
+    }
+  }
+
+  &__image-one {
+    left: 3rem;
+
+    @include for-size(tablet-landscape-up) {
+      left: 0;
+    }
+  }
+
+  &__image-two {
+    right: 3rem;
+
+    @include for-size(tablet-landscape-up) {
+      right: 0;
+    }
+  }
+
+  &.hide {
+    display: none;
+  }
+}
+
+.game {
+  width: 80rem;
+  max-width: 100%;
+  margin-top: 3rem;
+
+  &__scoreboard {
+    @include flexCenter;
+
+    @include for-size(phone-only) {
+      flex-direction: column
+    }
+  }
+
+  &__scoreboard-player {
+    @include flexCenter;
+    flex-direction: column;
+  }
+
+  &__scoreboard-name,
+  &__scoreboard-score {
+    font-size: 2rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    color: $clr-white;
+  }
+
+  &__scoreboard-score {
+    margin: 3rem;
+    padding: .8rem 1rem;
+    background: $clr-red;
+  }
+
+  &__scoreboard-versus {
+    font-size: 3rem;
+    padding: 0 15rem;
+    color: $clr-red;
+
+    @include for-size(phone-only) {
+      padding: 0 3rem
+    }
+  }
+
+  &__action {
+    @include flexCenter;
+    overflow: hidden;
+    margin-top: 6rem;
+
+    @include for-size(phone-only) {
+      flex-direction: column;
+    }
+  }
+
+  &__action-image-left,
+  &__action-image-right {
+    width: 12rem;
+    height: 12rem;
+  }
+
+  &__action-image-left {
+    transform: rotate(90deg);
+
+    &--animate {
+      animation: wobble-ver-left 1s both;
+    }
+  }
+
+  &__action-image-right {
+    transform: rotate(270deg);
+
+    &--animate {
+      animation: wobble-ver-right 1s both;
+    }
+  }
+
+  &__action-mensage {
+    @include flexCenter;
+    text-align: center;
+    color: $clr-white;
+    font-size: 1.6rem;
+    padding: 5rem;
+    width: 25rem;
+    height: 2rem;
+    font-weight: 600;
+    text-transform: uppercase;
+
+    &--win {
+      color: $clr-green;
+    }
+
+    &--lost {
+      color: $clr-red;
+    }
+
+    &--draw {
+      color: $clr-blue;
+    }
+  }
+
+  &__options {
+    @include flexCenter;
+    margin-top: 6rem;
+
+
+    & > * {
+      width: 8rem;
+      height: 8rem;
+      padding: 1rem;
+      border: solid .1rem $clr-white;
+      border-radius: 50%;
+      cursor: pointer;
+      transition: .4s;
+
+      @include for-size(phone-only) {
+        width: 5rem;
+        height: 5rem;
+      }
+
+      &:hover {
+        transform: scale(1.1);
+      }
+
+      &:not(:first-child) {
+        margin-left: 3rem;
+      }
+    }
+  }
+
+  &__controls {
+    @include flexCenter;
+    margin-top: 20rem;
+
+    @include for-size(phone-only) {
+      margin-top: 10rem;
+    }
+  }
+
+  &__restart,
+  &__home {
+    padding: 1rem 1.5rem;
+    text-transform: uppercase;
+    border-radius: .4rem;
+    border: none;
+    outline: none;
+    background: $clr-blue;
+    color: $clr-white;
+    font-weight: 600;
+    cursor: pointer;
+    transition: .4s;
+
+    &:hover {
+      background: rgba($clr-blue, .8);
+    }
+  }
+
+  &__home {
+    margin-left: 3rem;
+  }
+
+  &.hide {
+    display: none;
+  }
+}
+
+@keyframes wobble-ver-left {
+  0%,
+  100% {
+    transform: rotate(90deg);
+    transform-origin: 50% 50%;
+  }
+  15% {
+    transform: translateY(-30px) rotate(90deg);
+  }
+  30% {
+    transform: translateY(15px) rotate(90deg);
+  }
+  45% {
+    transform: translateY(-15px) rotate(90deg);
+  }
+  60% {
+    transform: translateY(9px) rotate(90deg);
+  }
+  75% {
+    transform: translateY(-6px) rotate(90deg);
+  }
+}
+
+@keyframes wobble-ver-right {
+  0%,
+  100% {
+    transform: rotate(270deg);
+    transform-origin: 50% 50%;
+  }
+  15% {
+    transform: translateY(-30px) rotate(270deg);
+  }
+  30% {
+    transform: translateY(15px) rotate(270deg);
+  }
+  45% {
+    transform: translateY(-15px) rotate(270deg);
+  }
+  60% {
+    transform: translateY(9px) rotate(270deg);
+  }
+  75% {
+    transform: translateY(-6px) rotate(270deg);
+  }
+}
