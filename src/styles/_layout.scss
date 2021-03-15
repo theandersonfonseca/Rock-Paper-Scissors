@@ -1,0 +1,13 @@
+@use 'base' as *;
+
+body {
+  height: 100vh;
+  @include flexCenter;
+  flex-direction: column;
+  padding: 0 1.5rem;
+  background: $clr-dark;
+
+  @include for-size(phone-only) {
+    height: auto;
+  }
+}
