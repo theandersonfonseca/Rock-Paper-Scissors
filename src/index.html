@@ -14,7 +14,7 @@
     />
   </head>
   <body>
-    <div class="home" data-home>
+    <div class="home hide" data-home>
       <h1 class="home__title">
         <span class="home__title--rock">Pedra</span>
         <span class="home__title--paper">Papel</span>
@@ -25,8 +25,43 @@
         <i class="home__play-icon fas fa-play"></i>
       </button>
 
-      <img class="home__image-one" src="/src/images/rock-paper-scissors.png" alt="rock-paper-scissors">
-      <img class="home__image-two" src="/src/images/rock-paper-scissors.png" alt="rock-paper-scissors">
+      <img class="home__image-one" src="/src/images/rock-paper-scissors.png" alt="pedra-papel-tesoura">
+      <img class="home__image-two" src="/src/images/rock-paper-scissors.png" alt="pedra-papel-tesoura">
     </div>
+
+    <main class="game">
+      <div class="game__scoreboard">
+        <div class="game__scoreboard-player">
+          <span class="game__scoreboard-name">Computador</span>
+          <span class="game__scoreboard-score" data-computer-score>0</span>
+        </div>
+
+        <span class="game__scoreboard-versus">X</span>
+
+        <div class="game__scoreboard-player">
+          <span class="game__scoreboard-name">Você</span>
+          <span class="game__scoreboard-score" data-player-score>0</span>
+        </div>
+      </div>
+
+      <div class="game__action" >
+        <img class="game__action-image-left" src="/src/images/rock.png" alt="pedra" data-action-computer>
+
+        <span class="game__action-mensage" data-action-mensage>Escolha sua jogada!</span>
+
+        <img class="game__action-image-right" src="/src/images/rock.png" alt="pedra" data-action-player>
+      </div>
+
+      <div class="game__options">
+        <img class="game__options-rock" src="/src/images/rock.png" alt="pedra" data-rock-option>
+        <img class="game__options-paper" src="/src/images/paper.png" alt="pedra" data-paper-option>
+        <img class="game__options-scissors" src="/src/images/scissors.png" alt="pedra" data-scissors-option>
+      </div>
+
+      <div class="game__controls">
+        <button class="game__restart" data-restart-btn>Recomeçar</button>
+        <button class="game__home" data-home-btn>Início</button>
+      </div>
+    </main>
   </body>
 </html>
