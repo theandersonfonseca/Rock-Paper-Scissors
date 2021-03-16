@@ -1,3 +1,5 @@
+import { rock, paper, scissors } from './images.js';
+
 const playBtn = document.querySelector('[data-play-btn]');
 const homeContainer = document.querySelector('[data-home]');
 const gameContainer = document.querySelector('[data-game]');
@@ -44,8 +46,8 @@ const newRound = () => {
   actionPlayer.classList.remove('game__action-image-right--animate');
   actionComputer.classList.remove('game__action-image-left--scissors');
   actionPlayer.classList.remove('game__action-image-right--scissors');
-  actionComputer.src = `/src/images/rock.png`;
-  actionPlayer.src = `/src/images/rock.png`;
+  actionComputer.src = rock;
+  actionPlayer.src = rock;
   cleanResultMessage();
 
   optionsBtn.addEventListener('click', handleOptions);
@@ -64,13 +66,20 @@ const resultAnimation = () => {
   actionPlayer.classList.add('game__action-image-right--animate');
 };
 
+const getImage = (option) => {
+  if (option === 'rock') return rock;
+  if (option === 'paper') return paper;
+
+  return scissors;
+};
+
 const addOptionsToDom = (playerOption, computerOption) => {
-  actionComputer.src = `/src/images/${computerOption}.png`;
+  actionComputer.src = getImage(computerOption);
 
   if (computerOption === 'scissors')
     actionComputer.classList.add('game__action-image-left--scissors');
 
-  actionPlayer.src = `/src/images/${playerOption}.png`;
+  actionPlayer.src = getImage(playerOption);
 
   if (playerOption === 'scissors')
     actionPlayer.classList.add('game__action-image-right--scissors');
