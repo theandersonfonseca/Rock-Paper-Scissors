@@ -42,6 +42,8 @@ const cleanResultMessage = () => {
 const newRound = () => {
   actionComputer.classList.remove('game__action-image-left--animate');
   actionPlayer.classList.remove('game__action-image-right--animate');
+  actionComputer.classList.remove('game__action-image-left--scissors');
+  actionPlayer.classList.remove('game__action-image-right--scissors');
   actionComputer.src = `/src/images/rock.png`;
   actionPlayer.src = `/src/images/rock.png`;
   cleanResultMessage();
@@ -64,13 +66,21 @@ const resultAnimation = () => {
 
 const addOptionsToDom = (playerOption, computerOption) => {
   actionComputer.src = `/src/images/${computerOption}.png`;
+
+  if (computerOption === 'scissors')
+    actionComputer.classList.add('game__action-image-left--scissors');
+
   actionPlayer.src = `/src/images/${playerOption}.png`;
+
+  if (playerOption === 'scissors')
+    actionPlayer.classList.add('game__action-image-right--scissors');
 };
 
 const handleResult = (result, playerOption, computerOption) => {
   optionsBtn.removeEventListener('click', handleOptions);
   homeBtn.removeEventListener('click', finishGame);
   restartBtn.removeEventListener('click', resetScore);
+  resultMessage.innerHTML = 'Aguarde...';
 
   resultAnimation();
 
