@@ -88,3 +88,19 @@ select {
   font-family: 'Open Sans', sans-serif;
 }
 
+.tributes {
+  position: absolute;
+  right: 1rem;
+  bottom: 1rem;
+  font-size: 1.4rem;
+  color: $clr-white;
+
+  @include for-size(phone-only) {
+    position: static;
+    margin-top: 15rem;
+  }
+
+  & > * {
+    color: $clr-green;
+  }
+}
