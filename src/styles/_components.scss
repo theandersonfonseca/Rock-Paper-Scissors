@@ -3,7 +3,7 @@
 .home {
   @include flexCenter;
   flex-direction: column;
-  position: absolute;
+  position: relative;
   width: 80rem;
   max-width: 100%;
   margin-top: 3rem;
@@ -137,6 +137,7 @@
   &__action-image-right {
     width: 12rem;
     height: 12rem;
+    transition: .4s;
   }
 
   &__action-image-left {
@@ -145,6 +146,10 @@
     &--animate {
       animation: wobble-ver-left 1s both;
     }
+
+    &--scissors {
+      transform: rotate(0deg) !important;
+    }
   }
 
   &__action-image-right {
@@ -152,6 +157,10 @@
 
     &--animate {
       animation: wobble-ver-right 1s both;
+    }
+
+    &--scissors {
+      transform: rotate(190deg) !important;
     }
   }
 
