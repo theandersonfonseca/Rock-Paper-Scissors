@@ -124,7 +124,6 @@ const getComputerOption = () => {
 };
 
 const handleOptions = (e) => {
-  console.log('f');
   const playerOption = e.target.dataset.option;
 
   if (!playerOption) return;
