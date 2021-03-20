@@ -50,7 +50,7 @@ const newRound = () => {
   actionPlayer.src = rock;
   cleanResultMessage();
 
-  optionsBtn.addEventListener('click', handleOptions);
+  optionsBtn.addEventListener('click', handleOptions, { once: true });
   homeBtn.addEventListener('click', finishGame);
   restartBtn.addEventListener('click', resetScore);
 };
@@ -86,9 +86,6 @@ const addOptionsToDom = (playerOption, computerOption) => {
 };
 
 const handleResult = (result, playerOption, computerOption) => {
-  optionsBtn.removeEventListener('click', handleOptions);
-  homeBtn.removeEventListener('click', finishGame);
-  restartBtn.removeEventListener('click', resetScore);
   resultMessage.innerHTML = 'Aguarde...';
 
   resultAnimation();
@@ -127,6 +124,7 @@ const getComputerOption = () => {
 };
 
 const handleOptions = (e) => {
+  console.log('f');
   const playerOption = e.target.dataset.option;
 
   if (!playerOption) return;
@@ -162,5 +160,5 @@ export default (function init() {
   playBtn.addEventListener('click', startGame);
   homeBtn.addEventListener('click', finishGame);
   restartBtn.addEventListener('click', resetScore);
-  optionsBtn.addEventListener('click', handleOptions);
+  optionsBtn.addEventListener('click', handleOptions, { once: true });
 })();
